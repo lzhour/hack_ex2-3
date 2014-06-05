@@ -22,7 +22,17 @@ def main():
             elif tokens[t] == "-":
                 total = subtract(total, int(tokens[t+1]))
             elif tokens[t] == "*":
-                total = subtract(total, int(tokens[t+1]))
+                total = multiply(total, int(tokens[t+1]))
+            elif tokens[t] == "/":
+                total = divide(total, float(tokens[t+1]))
+            elif tokens[t] == "square":
+                total = total + square(int(tokens[t+1]))
+            elif tokens[t] == "cube":
+                total = total + cube(int(tokens[t+1]))
+            elif tokens[t] == "pow":
+                total = power(total, int(tokens[t+1]))
+            elif tokens[t] == "mod":
+                total =  mod(total, int(tokens[t+1]))
             else:
                 pass
 
