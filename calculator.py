@@ -1,37 +1,48 @@
-"""
-repeat forever:
-    read input
-    tokenize input
-    if the first token is 'q', quit
-    otherwise decide which math function to call based on the tokens we read
-"""
-
 from math import pow
 
 def main():
     while True:
         data = raw_input("> ")
         tokens = data.split(" ")
+
         if tokens[0] == 'q':
             break
-        elif tokens[0] == "+":
-            print add(int(tokens[1]), int(tokens[2]))
-        elif tokens[0] == "-":
-            print subtract(int(tokens[1]), int(tokens[2]))
-        elif tokens[0] == "*":
-            print multiply(int(tokens[1]), int(tokens[2]))
-        elif tokens[0] == "/":
-            print divide(float(tokens[1]), float(tokens[2]))
-        elif tokens[0] == "square":
-            print square(int(tokens[1]))
-        elif tokens[0] == "cube":
-            print cube(int(tokens[1]))
-        elif tokens[0] == "pow":
-            print power(int(tokens[1]), int(tokens[2]))
-        elif tokens[0] == "mod":
-            print mod(int(tokens[1]), int(tokens[2]))
-        else:
-            break
+
+        # tokens_to_add = []
+        # for t in range(1, len(tokens), 2):
+        #     if tokens[t] == "*":
+        #         result = multiply(int(tokens[t-1]), int(tokens[t+1]))
+        #         tokens_to_add.append(result)
+
+        total = int(tokens[0])
+
+        for t in range(1, len(tokens), 2):
+            if tokens[t] == "+":
+                total = add(total, int(tokens[t+1]))
+            elif tokens[t] == "-":
+                total = subtract(total, int(tokens[t+1]))
+            elif tokens[t] == "*":
+                total = subtract(total, int(tokens[t+1]))
+            else:
+                pass
+
+        print total
+
+
+            # elif tokens[0] == "*":
+            #     print multiply(int(tokens[1]), int(tokens[2]))
+            # elif tokens[0] == "/":
+            #     print divide(float(tokens[1]), float(tokens[2]))
+            # elif tokens[0] == "square":
+            #     print square(int(tokens[1]))
+            # elif tokens[0] == "cube":
+            #     print cube(int(tokens[1]))
+            # elif tokens[0] == "pow":
+            #     print power(int(tokens[1]), int(tokens[2]))
+            # elif tokens[0] == "mod":
+            #     print mod(int(tokens[1]), int(tokens[2]))
+            # else:
+            #     break
 
 def add(num1, num2):
     return num1 + num2
@@ -46,10 +57,10 @@ def divide(num1, num2):
     return num1 / num2
 
 def square(num1):
-    return num1 * num1
+    return int(pow(num1, 2))
 
 def cube(num1):
-    return num1 * num1 * num1
+    return int(pow(num1, 3))
 
 def power(num1, num2):
     return int(pow(num1, num2))
